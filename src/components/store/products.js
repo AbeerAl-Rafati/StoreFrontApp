@@ -15,6 +15,7 @@ import FavoriteIcon from '@material-ui/icons/Favorite';
 import ShareIcon from '@material-ui/icons/Share';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import MoreVertIcon from '@material-ui/icons/MoreVert';
+import ShoppingCartIcon from '@material-ui/icons/ShoppingCart';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -65,8 +66,8 @@ export default function RecipeReviewCard() {
       />
       <CardMedia
         className={classes.media}
-        image="/static/images/cards/paella.jpg"
-        title="Paella dish"
+        image="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQSyqJsK9zNXX7COlUGD3fJzTGTpkIrSmK7qA&usqp=CAU"
+        title="dimian"
       />
       <CardContent>
         <Typography variant="body2" color="textSecondary" component="p">
@@ -78,7 +79,7 @@ export default function RecipeReviewCard() {
           <FavoriteIcon />
         </IconButton>
         <IconButton aria-label="share">
-          <ShareIcon />
+          <ShoppingCartIcon />
         </IconButton>
         <IconButton
           className={clsx(classes.expand, {
