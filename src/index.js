@@ -5,8 +5,8 @@ import App from './App';
 
 import {createStore, combineReducers} from 'redux';
 import {Provider} from 'react-redux';
-import categoriesReducer from './store/categories';
-import productsReducer from './store/products';
+import categoriesReducer from './redux/reducers/categories'
+import productsReducer from './redux/reducers/products'
 
 const reducers = combineReducers({ categories: categoriesReducer, products:productsReducer  });
 
