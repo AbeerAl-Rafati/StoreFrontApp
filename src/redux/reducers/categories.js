@@ -10,21 +10,21 @@ const initState = {
         "Help in developing critical thinking skills, encouraging  to understand the constraints operate within when making certain choices or even when decided which goals should pursue.",
     },
   ],
-
+  activeCat: [],
 };
 function categoriesReducer(state = initState, action) {
   const { type, payload } = action;
 
   switch (type) {
     case "ACTIVE_CAT":
-      let categories;
-      state.Categories.map((category) => {
+      let activeCat;
+      state.categories.map((category) => {
         if (category.bookType === payload) {
-          categories = category;
+          activeCat = category;
         }
       });
 
-      return { ...state, categories };
+      return { ...state, activeCat };
 
     default:
       return state;

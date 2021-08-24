@@ -59,17 +59,18 @@ const initState = {
         "https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1311647938l/718477.jpg",
     },
   ],
+  selected: []
 };
 function productsReducer(state = initState, action) {
   const { type, payload } = action;
 
   switch (type) {
     case "SELECTED_CAT":
-      let products = state.products.filter((book) =>
+      let selected = state.products.filter((book) =>
         book.category === payload ? book : null
       );
 
-      return { ...state, products };
+      return { ...state, selected };
 
     default:
       return state;
