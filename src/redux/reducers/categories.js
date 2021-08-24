@@ -18,9 +18,9 @@ function categoriesReducer(state = initState, action) {
   switch (type) {
     case "ACTIVE_CAT":
       let activeCategory;
-      state.Categories.map((book) => {
-        if (book.bookType === payload) {
-          activeCategory = book;
+      state.Categories.map((category) => {
+        if (category.bookType === payload) {
+          activeCategory = category;
         }
       });
 
