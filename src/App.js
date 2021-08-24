@@ -1,7 +1,7 @@
 import Header from "./components/Header";
 import Footer from "./components/Footer";
-import Categories from "./components/store/categories";
-import Products from './components/store/products'
+import Categories from "./components/storefront/categories";
+import Products from './components/storefront/products'
 
 function App() {
   return (
