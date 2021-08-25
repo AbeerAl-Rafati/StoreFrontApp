@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import PropTypes from "prop-types";
 import { makeStyles } from "@material-ui/core/styles";
 import AppBar from "@material-ui/core/AppBar";
@@ -9,7 +9,7 @@ import Box from "@material-ui/core/Box";
 ////-----------------------------------------------////
 
 import { connect } from "react-redux";
-import { selectedCategory, selectedCategoryItems } from "../../redux/actions";
+import { categorizedBooks } from "../../redux/actions";
 
 ///------------------------------------------------////
 function TabPanel(props) {
@@ -54,62 +54,51 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 function ScrollableTabsButtonAuto(props) {
+  useEffect(() => {
+    props.categorizedBooks("Historical Books");
+  }, [props]);
   const classes = useStyles();
-  const [value, setValue] = React.useState(0);
-
-  const handleChange = (event, newValue) => {
-    // setValue(newValue);
-    props.selectedCategory(newValue);
-    props.selectedCategoryItems(newValue);
-  };
 
   return (
     <div className={classes.root}>
       <AppBar position="static" color="default">
-        {props.categories.map((cat) => {
-          return (
-            <Tabs
-              value={cat.bookType}
-              // onChange={handleChange}
-              onClick={() => handleChange(cat.bookType)}
-              indicatorColor="primary"
-              textColor="primary"
-              variant="scrollable"
-              scrollButtons="auto"
-              aria-label="scrollable auto tabs example"
-            >
-              <Tab label={cat.bookType} {...a11yProps(0)} />
-              {/* <Tab label="Philosophy Books" {...a11yProps(1)} /> */}
-              {/* <Tab label="Literature Books" {...a11yProps(2)} />
-              <Tab label="Psychology Books" {...a11yProps(3)} />
-              <Tab label="Medical Books" {...a11yProps(4)} />
-              <Tab label="Programing Books" {...a11yProps(5)} />
-              <Tab label="Novels" {...a11yProps(6)} /> */}
-            </Tabs>
-          );
-        })}
+        <Tabs
+          value={props.categories.bookType}
+          indicatorColor="primary"
+          textColor="primary"
+          variant="scrollable"
+          scrollButtons="auto"
+          aria-label="scrollable auto tabs example"
+        >
+          {props.categories.map((cat) => {
+            return (
+              <>
+                <Tab
+                  key={cat.bookType}
+                  label={cat.bookType}
+                  {...a11yProps(0)}
+                  onClick={() => {
+                    props.categorizedBooks(cat.bookType);
+                  }}
+                />
+              </>
+            );
+          })}
+        </Tabs>
       </AppBar>
-      <TabPanel value={value} index={0}>
-        Historical Books
-      </TabPanel>
-      <TabPanel value={value} index={1}>
-        Philosophy Books
-      </TabPanel>
-      <TabPanel value={value} index={2}>
-        Literature Books
-      </TabPanel>
-      <TabPanel value={value} index={3}>
-        Psychology Books
-      </TabPanel>
-      <TabPanel value={value} index={4}>
-        Medical Books
-      </TabPanel>
-      <TabPanel value={value} index={5}>
-        Programing Books
-      </TabPanel>
-      <TabPanel value={value} index={6}>
-        Novels
-      </TabPanel>
+      {console.log(props)}
+      <div style={{ fontSize: "50px", marginTop: "5%", textAlign: "center" }}>
+        {props.activeCategory.bookType}
+      </div>
+      <div
+        style={{
+          fontSize: "25px",
+          textAlign: "center",
+          color: "GrayText",
+        }}
+      >
+        {props.activeCategory.description}
+      </div>
     </div>
   );
 }
@@ -118,7 +107,7 @@ const mapStateToProps = (state) => {
   return state.categories;
 };
 
-const mapDispatchToProps = { selectedCategory, selectedCategoryItems };
+const mapDispatchToProps = { categorizedBooks };
 
 export default connect(
   mapStateToProps,

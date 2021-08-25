@@ -6,8 +6,8 @@ function Stor() {
     <div>
       <Router>
         <switch>
-          {/* <Route exact from='/' render={props => <Index/>} />
-          <Route exact from='/cart' render={props=><Cart/>}/> */}
+          <Route exact from='/' render={props => <Index/>} />
+          <Route exact from='/cart' render={props=><Cart/>}/>
         </switch>
       </Router>
     </div>
