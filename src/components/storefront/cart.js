@@ -2,6 +2,7 @@ import React from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import TextField from "@material-ui/core/TextField";
 import { connect } from "react-redux";
+import { removeFromCart } from "../../redux/actions";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -16,15 +17,22 @@ function TextFieldSizes(props) {
   const classes = useStyles();
 
   return (
-    <div style={{ margin: "2% 40%" }}>
+    <div style={{ margin: "2% 20%" }}>
       <h3>Order Summary</h3>
       {props.cart.map((book) => {
-        return <div>{book.name} </div>;
+        return (
+          <div>
+            {book.name}
+            <span style={{ color: "red", marginLeft: "2rem" }} onClick={props.removeFromCart(book.name)}> Remove </span>{" "}
+          </div>
+        );
       })}
       <h3>Total Price</h3>
       {props.cart.map((book) => {
-        return ( total += book.price );
+        return (total += book.price);
       })}
+
+      <div style={{ marginBottom: "4rem" }}></div>
       <form className={classes.root} noValidate autoComplete="off">
         <div>
           <TextField
@@ -93,5 +101,6 @@ function TextFieldSizes(props) {
 function mapStateToProps(state) {
   return { cart: state.cart };
 }
+const mapDispatchToProps = { removeFromCart };
 
-export default connect(mapStateToProps)(TextFieldSizes);
+export default connect(mapStateToProps, mapDispatchToProps)(TextFieldSizes);
