@@ -97,7 +97,7 @@ function productsReducer(state = initState, action) {
         activeProducts: state.activeProducts,
       };
 
-    case "LOAD_PRODUCTS":
+    case "REFLECT_PRODUCT":
       return {
         products: payload,
         activeProducts: state.activeProducts,
