@@ -1,15 +1,20 @@
-export const selectedCategory = (name) => {
+export function decreaseStock(product) {
   return {
-    type: 'ACTIVE_CAT',
+    type: "DECREASE_STOCK",
+    payload: product,
+  };
+}
+
+export function categorizedBooks(name) {
+  return {
+    type: "CHANGE_ACTIVE",
     payload: name,
   };
-};
+}
 
-
-export const selectedCategoryItems = (name) => {
- ;
+export function addToCart(product) {
   return {
-    type: 'SELECTED_CAT',
-    payload: name,
+    type: "ADD_TO_CART",
+    payload: product,
   };
-};
+}
