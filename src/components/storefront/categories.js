@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React from "react";
 import PropTypes from "prop-types";
 import { makeStyles } from "@material-ui/core/styles";
 import AppBar from "@material-ui/core/AppBar";
@@ -54,9 +54,9 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 function ScrollableTabsButtonAuto(props) {
-  useEffect(() => {
-    props.categorizedBooks("Historical Books");
-  }, []);
+  // useEffect(() => {
+  //   props.categorizedBooks("Historical Books");
+  // }, []);
   const classes = useStyles();
 
   return (
