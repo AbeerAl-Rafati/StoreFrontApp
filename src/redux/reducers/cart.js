@@ -4,7 +4,7 @@ export default function cartReducer(state = initialState, action) {
   const { type, payload } = action;
 
   {
-    console.log("from cart !!!!!!!!!!", state);
+    console.log("from cart !!!!!!!!!!", state, "paylod", payload);
   }
   switch (type) {
     case "ADD_TO_CART":
@@ -14,12 +14,10 @@ export default function cartReducer(state = initialState, action) {
         return state;
       }
 
-    // case "REMOVE_FROM_CART":
-    //   payload.available++;
+    case "REMOVE_FROM_CART":
+      let newCart = state.filter((item) => item.name !== payload);
 
-    //   let newCart = state.filter((item) => item !== payload);
-
-    //   return { cart: newCart };
+      return [newCart];
 
     default:
       return state;
