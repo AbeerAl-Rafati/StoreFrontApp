@@ -18,3 +18,11 @@ export function addToCart(product) {
     payload: product,
   };
 }
+
+
+export function removeFromCart(product) {
+  return {
+      type: "REMOVE_FROM_CART",
+      payload: product,
+  }
+}
