@@ -56,7 +56,7 @@ const useStyles = makeStyles((theme) => ({
 function ScrollableTabsButtonAuto(props) {
   useEffect(() => {
     props.categorizedBooks("Historical Books");
-  }, [props]);
+  }, []);
   const classes = useStyles();
 
   return (

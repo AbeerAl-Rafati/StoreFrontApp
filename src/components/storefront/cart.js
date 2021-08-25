@@ -18,12 +18,20 @@ function TextFieldSizes(props) {
 
   return (
     <div style={{ margin: "2% 20%" }}>
+      {console.log(props)}
       <h3>Order Summary</h3>
       {props.cart.map((book) => {
         return (
           <div>
             {book.name}
-            <span style={{ color: "red", marginLeft: "2rem" }} onClick={props.removeFromCart(book.name)}> Remove </span>{" "}
+            <span
+              style={{ color: "red", marginLeft: "2rem" }}
+              onClick={() => {
+                // props.removeFromCart(book);
+              }}
+            >
+              Remove
+            </span>
           </div>
         );
       })}
@@ -31,7 +39,6 @@ function TextFieldSizes(props) {
       {props.cart.map((book) => {
         return (total += book.price);
       })}
-
       <div style={{ marginBottom: "4rem" }}></div>
       <form className={classes.root} noValidate autoComplete="off">
         <div>
@@ -98,9 +105,10 @@ function TextFieldSizes(props) {
   );
 }
 
-function mapStateToProps(state) {
+const mapStateToProps = (state) => {
   return { cart: state.cart };
-}
+};
+
 const mapDispatchToProps = { removeFromCart };
 
 export default connect(mapStateToProps, mapDispatchToProps)(TextFieldSizes);

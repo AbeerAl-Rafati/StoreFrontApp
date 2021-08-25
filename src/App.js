@@ -3,6 +3,7 @@ import Footer from "./components/Footer";
 import Categories from "./components/storefront/categories";
 import Products from "./components/storefront/products";
 import Cart from "./components/storefront/cart";
+import Massage from "./components/storefront/alert";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 function App() {
   return (
@@ -12,6 +13,7 @@ function App() {
           <Route exact path="/">
             <Header />
             <Categories />
+            <Massage />
             <Products />
 
             <Footer />
